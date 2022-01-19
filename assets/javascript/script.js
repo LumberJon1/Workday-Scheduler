@@ -2,8 +2,15 @@
 // OUTLINE
 
 //Define variables to use for time with moment.js
+var jumboDate = moment().format("dddd MMMM Do, YYYY");
+
+var currentTime = moment().hour();
+console.log(currentTime);
+var dayBegin = 9;
+var dayEnd = 18;
 
 // On page load, the current day should display at the jumbotron inside the <p> element.
+$("#currentDay").text(jumboDate);
 
 // Define container on which to load the hourly elements
 
