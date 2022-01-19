@@ -12,24 +12,18 @@ var dayEnd = 18;
 // On page load, the current day should display at the jumbotron inside the <p> element.
 $("#currentDay").text(jumboDate);
 
-// Define container on which to load the hourly elements
+//Set the time in the left-hand span elements with moment.js so it can be evaluated
+
+// Apply styles to each div based on the current time evaluation
 $(".container");
+//IF the time is after an element, that element should be grayed out
 
-//Define the storage array that will hold the elements' data and state
+//If the time is before an element, those future elements should be white
 
-//Define each element by hour from 9AM until 5PM
-
-//Each element needs a span on the left with the time, a div in the middle to hold
-//the text content and color, and a button on the right to save.
+//Define the storage array that will hold the elements' data
 
 //On clicking the div, it should change to a textarea and allow the user to type content.
 
 //When the focus changes, it should revert to a div, but keep the text content.
 
 //When the user clicks the button on the right, the data should be appended to localStorage.
-
-//Check against local time to see whether styles should be applied
-
-//IF the time is after an element, that element should be grayed out
-
-//If the time is before an element, those future elements should be white
