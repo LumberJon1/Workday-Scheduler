@@ -13,6 +13,7 @@ var dayEnd = 18;
 $("#currentDay").text(jumboDate);
 
 // Define container on which to load the hourly elements
+$(".container");
 
 //Define the storage array that will hold the elements' data and state
 
