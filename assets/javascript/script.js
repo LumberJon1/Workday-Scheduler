@@ -5,7 +5,6 @@
 var jumboDate = moment().format("dddd MMMM Do, YYYY");
 
 var currentTime = moment().hour();
-console.log(currentTime);
 var dayBegin = 9;
 var dayEnd = 18;
 
@@ -13,9 +12,18 @@ var dayEnd = 18;
 $("#currentDay").text(jumboDate);
 
 //Set the time in the left-hand span elements with moment.js so it can be evaluated
+$(".row").each(function(index) {
+    $(this).children("span").text();
+
+    var blockTime = moment().hour("9").add(index,"hour").format("h");
+    $(this).children("span").text(blockTime);
+
+    console.log("Current time:", currentTime);
+
+    
+});
 
 // Apply styles to each div based on the current time evaluation
-$(".container");
 //IF the time is after an element, that element should be grayed out
 
 //If the time is before an element, those future elements should be white
@@ -43,8 +51,12 @@ var updateContent = function() {
     var position = $(this).parent("div").children("span").text();
     
     //Append the values to the local array and save
+    /*This currently pushes and doesn't check if there is already an entry
+    for that particular hour; this needs to be fixed somehow. */
     tasks.push({position: position, content: content});
     console.log(tasks);
+
+    //When the user clicks the button on the right, the data should be appended to localStorage.
 
     //Change back to a <div> element from <textarea>
     var originalDiv = $("<div>").text(content)
@@ -54,7 +66,3 @@ var updateContent = function() {
 
 //Listener for the saving of edited content
 $(".btn-primary").on("click", updateContent);
-
-//When the focus changes, it should revert to a div, but keep the text content.
-
-//When the user clicks the button on the right, the data should be appended to localStorage.
