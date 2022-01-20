@@ -4,10 +4,6 @@
 //Define variables to use for time with moment.js
 var jumboDate = moment().format("dddd MMMM Do, YYYY");
 
-var currentTime = moment().hour();
-var dayBegin = 9;
-var dayEnd = 18;
-
 // On page load, the current day should display at the jumbotron inside the <p> element.
 $("#currentDay").text(jumboDate);
 
@@ -15,18 +11,38 @@ $("#currentDay").text(jumboDate);
 $(".row").each(function(index) {
     $(this).children("span").text();
 
-    var blockTime = moment().hour("9").add(index,"hour").format("h");
+    var time = moment().set("hour", 9 + index);
+    console.log(time.hour());
+
+    //Set the content of each div's span element to the "h:00" format of current time
+    var blockTime = moment().hour(9 + index).format("h:00");
     $(this).children("span").text(blockTime);
 
-    console.log("Current time:", currentTime);
+    //Define selector to style
+    var hourBlock = $(this).children("div");
+    console.log(hourBlock);
 
-    
+    if (moment().isAfter(time)) {
+        console.log("This block is before the current time");
+        //Remove any previous color styles and add the grayed-out style
+        hourBlock.removeClass("bg-light bg-primary");
+        hourBlock.addClass("bg-secondary");
+
+    }
+    else if (moment().isBefore(time)) {
+        console.log("This time block has not occurred yet.");
+        //Remove any previous color styles
+        hourBlock.removeClass("bg-primary bg-secondary");
+        hourBlock.addClass("bg-light");
+    }
+    else {
+        console.log("This is the current hour");
+        //Apply a light blue highlight or border
+        hourBlock.removeClass("bg-light bg-secondary");
+        hourBlock.addClass("bg-primary");
+    }
 });
 
-// Apply styles to each div based on the current time evaluation
-//IF the time is after an element, that element should be grayed out
-
-//If the time is before an element, those future elements should be white
 
 //Define the storage array that will hold the elements' data
 tasks = []
