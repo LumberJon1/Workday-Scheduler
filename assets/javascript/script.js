@@ -132,7 +132,7 @@ var updateContent = function() {
 
     //Change back to a <div> element from <textarea>
     var originalDiv = $("<div>").text(content)
-        .addClass("col-10 hourly-task text-center border border-secondary rounded-sm mb-1 p-3 bg-light");
+        .addClass("col-6 col-sm-8 col-lg-9 hourly-task text-center border border-secondary rounded-sm mb-1 p-3 bg-light");
     $(this).parent("div").children("textarea").replaceWith(originalDiv);
     
     //re-format the colors and styles of each div
