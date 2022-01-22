@@ -28,19 +28,19 @@ var formatHours = function() {
 
         if (moment().isAfter(time)) {
             //Remove any previous color styles and add the grayed-out style
-            hourBlock.removeClass("bg-light bg-primary");
+            hourBlock.removeClass("bg-light bg-info");
             hourBlock.addClass("bg-secondary");
 
         }
         else if (moment().isBefore(time)) {
             //Remove any previous color styles
-            hourBlock.removeClass("bg-primary bg-secondary");
+            hourBlock.removeClass("bg-info bg-secondary");
             hourBlock.addClass("bg-light");
         }
         else {
             //Apply a light blue highlight or border
             hourBlock.removeClass("bg-light bg-secondary");
-            hourBlock.addClass("bg-primary");
+            hourBlock.addClass("bg-info");
         }
     });
 }
@@ -51,7 +51,7 @@ var editContent = function() {
     var text = $(this).text().trim();
 
     var textInput = $("<textarea>")
-        .addClass("form-control col-10")
+        .addClass("form-control col-6 col-sm-8 col-lg-9")
         .val(text);
 
     $(this).replaceWith(textInput);
@@ -82,13 +82,6 @@ var loadTasks = function() {
             hour5: ""
         };
     };
-
-    console.log("tasks:", tasks);
-
-    //Somehow validate tasks to only include one per time block
-    // for (var i = 0; i < tasks.length; i++) {
-    //     tasks[i] = loadedTasks[i];
-    // };
 };
 
 //Listener for the onclick event within hourly task
@@ -98,49 +91,36 @@ $(".container").on("click", ".hourly-task", editContent);
 var updateContent = function() {
     var content = $(this).parent("div").children("textarea").val();
     var position = $(this).parent("div").children("span").text();
-    
-    //Append the values to the local array and save
-    /*This currently pushes and doesn't check if there is already an entry
-    for that particular hour; this needs to be fixed somehow. */
+
     loadTasks();
 
     //Determine which hour to set the value to content within
-    console.log("position: "+position);
     switch(position) {
         case "9:00":
-            console.log("adding to position 9:00");
             tasks.hour9 = content;
             break;
-        case "10:00":
-            console.log("adding to position 10:00");
+        case "10:00":;
             tasks.hour10 = content;
             break;
-        case "11:00":
-            console.log("adding to position 11:00");
+        case "11:00":;
             tasks.hour11 = content;
             break;
-        case "12:00":
-            console.log("adding to position 12:00");
+        case "12:00":;
             tasks.hour12 = content;
             break;
         case "1:00":
-            console.log("adding to position 1:00");
             tasks.hour1 = content;
             break;
         case "2:00":
-            console.log("adding to position 2:00");
             tasks.hour2 = content;
             break;
         case "3:00":
-            console.log("adding to position 3:00");
             tasks.hour3 = content;
             break;
         case "4:00":
-            console.log("adding to position 4:00");
             tasks.hour4 = content;
             break;
         case "5:00":
-            console.log("adding to position 5:00");
             tasks.hour5 = content;
             break;
         default:
