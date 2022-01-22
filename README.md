@@ -11,6 +11,7 @@ Tasks will remain in the browser's local storage, so they will persist upon refr
 ![screenshot](./assets/images/screenshot.JPG)
 
 ## Deployed URL
+https://lumberjon1.github.io/Workday-Scheduler/
 
 ## Author
 Jonathan Williams, 2022
